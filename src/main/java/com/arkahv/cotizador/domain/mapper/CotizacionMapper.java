@@ -48,7 +48,7 @@ public class CotizacionMapper {
                 .map(p -> {
                     ProductoEntity pe = new ProductoEntity();
                     pe.setId(p.getId());
-                    pe.setId_cotizacion(cotizacion.getId()); // importante para vincular
+                    pe.setIdCotizacion(cotizacion.getId()); // importante para vincular
                     pe.setNombre(p.getNombre());
                     pe.setPrecio(p.getPrecio());
                     pe.setCantidad(p.getCantidad());

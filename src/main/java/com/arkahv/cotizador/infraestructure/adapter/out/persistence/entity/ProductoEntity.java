@@ -16,7 +16,7 @@ public class ProductoEntity {
     @Id
     private int id;
     @Column("idCotizacion")
-    private int id_cotizacion;
+    private int idCotizacion;
     private int producto;
     private String nombre;
     private double precio;

@@ -33,7 +33,7 @@ public class CotizadorController {
 
     @GetMapping("/{id}")
     public Mono<Cotizacion> obtener(@PathVariable Integer id) {
-return null;
+    return cotizacionService.obtenerCotizacion(id);
     }
 
 

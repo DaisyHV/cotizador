@@ -42,7 +42,7 @@ public class CotizacionServiceImpl implements CotizacionService{
 
                                 ProductoEntity productoEntity = new ProductoEntity();
                                 productoEntity.setId(item.getId());
-                                productoEntity.setId_cotizacion(saved.getId());
+                                productoEntity.setIdCotizacion(saved.getId());
                                 productoEntity.setNombre(item.getNombre());
                                 productoEntity.setCantidad(item.getCantidad());
                                 productoEntity.setPrecio(item.getPrecio());
@@ -85,6 +85,14 @@ public class CotizacionServiceImpl implements CotizacionService{
 
     @Override
     public Mono<Cotizacion> obtenerCotizacion(Integer cotizacionId) {
-        return null;
+        //Cotizacion cotizacion = new Cotizacion();
+        Mono<CotizacionEntity> cotizacionEntity = cotizacionRepository.findById(cotizacionId);
+        Flux<ProductoEntity> productosEntity = productoRepo.findByIdCotizacion(cotizacionId);
+
+        return cotizacionEntity.flatMap(ce ->
+                productosEntity.collectList().map(peList -> {
+                    return cotizacionMapper.toDomain(ce, peList);
+                })
+        );
     }
 }
