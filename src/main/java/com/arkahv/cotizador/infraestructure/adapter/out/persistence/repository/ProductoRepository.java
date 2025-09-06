@@ -6,5 +6,5 @@ import reactor.core.publisher.Flux;
 
 public interface ProductoRepository extends ReactiveCrudRepository<ProductoEntity, Integer> {
 
-    Flux<ProductoEntity> findByIdCotizacion(int idCotizacion);
+    Flux<ProductoEntity> findByIdCotizacion(Integer idCotizacion);
 }
